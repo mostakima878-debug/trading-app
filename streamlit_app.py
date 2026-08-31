@@ -111,9 +111,9 @@ try:
                 data=response.text,
                 file_name=f"{app_name}_live.py",
                 mime="text/plain"
-            )
-        else:
-            st.error("पार्टनर, विजन और एपीआई की डालना मत भूल!")
+            
+        
+            
 
 
 # बटन जिस पर क्लिक करके प्रोसेस शुरू होगी

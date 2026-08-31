@@ -115,5 +115,19 @@ try:
         else:
             st.error("पार्टनर, विजन और एपीआई की डालना मत भूल!")
 
-except Exception as e:
-    st.error(f"सिस्टम क्रिटिकल एरर: {e}")
+# AI Video-to-Cartoon Studio का नया फीचर
+st.markdown("---")
+st.title("🎬 AI Video-to-Cartoon & Voice Studio")
+st.write("Instagram, YouTube या Facebook का लिंक डालो और वीडियो को कार्टून में बदलो!")
+
+# यूज़र से वीडियो का लिंक लेने के लिए इनपुट बॉक्स
+video_url = st.text_input("यहाँ वीडियो का लिंक (URL) पेस्ट करें:")
+
+# बटन जिस पर क्लिक करके प्रोसेस शुरू होगी
+if st.button("वीडियो प्रोसेस करना शुरू करें 🚀"):
+    if video_url:
+        st.success(f"लिंक मिल गया भाई: {video_url}")
+        # यहाँ आगे का डाउनलोडिंग और प्रोसेसिंग कोड आएगा
+    else:
+        st.warning("कृपया पहले कोई वैध (Valid) लिंक तो डाल मेरे भाई!")
+

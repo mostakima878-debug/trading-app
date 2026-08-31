@@ -115,19 +115,31 @@ try:
         else:
             st.error("पार्टनर, विजन और एपीआई की डालना मत भूल!")
 
-# AI Video-to-Cartoon Studio का नया फीचर
-st.markdown("---")
-st.title("🎬 AI Video-to-Cartoon & Voice Studio")
-st.write("Instagram, YouTube या Facebook का लिंक डालो और वीडियो को कार्टून में बदलो!")
-
-# यूज़र से वीडियो का लिंक लेने के लिए इनपुट बॉक्स
-video_url = st.text_input("यहाँ वीडियो का लिंक (URL) पेस्ट करें:")
 
 # बटन जिस पर क्लिक करके प्रोसेस शुरू होगी
 if st.button("वीडियो प्रोसेस करना शुरू करें 🚀"):
     if video_url:
         st.success(f"लिंक मिल गया भाई: {video_url}")
-        # यहाँ आगे का डाउनलोडिंग और प्रोसेसिंग कोड आएगा
+        
+        import yt_dlp
+        import os
+        
+        st.info("🔄 वीडियो डाउनलोड हो रही है, थोड़ा इंतज़ार कर भाई...")
+        
+        # वीडियो डाउनलोड करने की सेटिंग
+        ydl_opts = {
+            'format': 'mp4',
+            'outtmpl': 'downloaded_video.mp4',
+        }
+        
+        try:
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                ydl.download([video_url])
+            st.success("✅ वीडियो सफलतापूर्वक डाउनलोड हो गई!")
+            st.video("downloaded_video.mp4")
+        except Exception as e:
+            st.error(f"डाउनलोड करने में एरर आया: {e}")
+            
     else:
         st.warning("कृपया पहले कोई वैध (Valid) लिंक तो डाल मेरे भाई!")
 
